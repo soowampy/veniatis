@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+	<!-- 만약 데이터가 null로 전달되었으면 빈칸이 아닌 NULL로 인식 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		
+	</settings>	
+	<typeAliases>
+		<typeAlias type="com.kh.veniatis.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.BlogCate" alias="BlogCate"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.BlogPost" alias="BlogPost"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.BlogDetail" alias="BlogDetail"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.BlogAlert" alias="BlogAlert"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.BlogSub" alias="BlogSub"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.ReReply" alias="ReReply"/>
+		<typeAlias type="com.kh.veniatis.blog.model.vo.Compet" alias="Compet"/>
+		<typeAlias type="com.kh.veniatis.member.model.vo.QnA" alias="QnA"/>
+		<typeAlias type="com.kh.veniatis.common.files.model.vo.Files" alias="Files"/>
+		<typeAlias type="com.kh.veniatis.common.likes.model.vo.Likes" alias="Likes"/>
+		<typeAlias type="com.kh.veniatis.common.reply.model.vo.Reply" alias="Reply"/>	
+		<typeAlias type="com.kh.veniatis.project.creator.model.vo.Project" alias="Project"/>			
+		<typeAlias type="com.kh.veniatis.project.creator.model.vo.Creator" alias="Creator"/>	
+		<typeAlias type="com.kh.veniatis.project.creator.model.vo.Reward" alias="Reward"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/blog-mapper.xml"/>
+		<mapper resource="mappers/like-mapper.xml"/>
+		<mapper resource="mappers/reply-mapper.xml"/>
+		<mapper resource="mappers/files-mapper.xml"/>	
+		<mapper resource="mappers/puser-mapper.xml"/>
+		<mapper resource="mappers/creator-mapper.xml"/>
+	</mappers>
+
+</configuration>

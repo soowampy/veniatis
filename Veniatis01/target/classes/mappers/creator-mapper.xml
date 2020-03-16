@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+	
+<mapper namespace = "creatorMapper">
+	<resultMap id="creatorResultSet" type="Creator">
+		<id property="creNo" column="CRE_NO"/>
+		<result property="mNo" column="M_NO"/>
+		<result property="creName" column="CRE_NAME"/>
+		<result property="creContent" column="CRE_CONTENT"/>
+		<result property="creType" column="CRE_TYPE"/>
+		<result property="creEmail" column="CRE_EMAIL"/>
+		<result property="creAddress" column="CRE_ADDRESS"/>
+		<result property="crePhone" column="CRE_PHONE"/>
+		<result property="creUrl" column="CRE_URL"/>
+		<result property="creStatus" column="CRE_STATUS"/>
+				
+	</resultMap>
+	
+	<resultMap id="projectResultSet" type="Project">
+		<id property="pNo" column="P_NO"/>
+		<result property="creNo" column="CRE_NO"/>
+		<result property="pcNo" column="PC_NO"/>
+		<result property="pUrl" column="P_URL"/>
+		<result property="pTitle" column="P_TITLE"/>
+		<result property="pText" column="P_SIMPLE_TEXT"/>
+		<result property="pDesc" column="P_DESC"/>
+		<result property="pVideo" column="P_VIDEO"/>
+		<result property="pHashTag" column="P_HASHTAG"/>
+		<result property="pStartDate" column="P_START_DATE"/>
+		<result property="pEndDate" column="P_END_DATE"/>
+		<result property="pTargetAmount" column="P_TARGET_AMOUNT"/>
+		<result property="pSumAmount" column="P_SUM_AMOUNT"/>
+		<result property="pAccount" column="P_ACCOUNT"/>
+		<result property="pStatus" column="P_STATUS"/>
+	</resultMap>
+	
+	<resultMap id="rewardResultSet" type="Reward">
+		<id property="rNo" column="R_NO"></id>
+		<result property="pNo" column="P_NO"/>
+		<result property="rSeq" column="R_SEQ"/>
+		<result property="rItem" column="R_ITEM"/>
+		<result property="rPrice" column="R_PRICE"/>
+		<result property="rLimit" column="R_LIMIT"/>
+		<result property="rCount" column="R_COUNT"/>
+		<result property="rOption" column="R_OPTION"/>
+		<result property="rDelivery" column="R_DELIVERY"/>
+	</resultMap>
+	
+	<insert id="creatorInsert" parameterType="Creator">
+		INSERT INTO CREATOR
+		VALUES(SEQ_CRE_NO.NEXTVAL,#{mNo},NULL,1,#{creEmail},#{crePhone},#{creAddress},#{creUrl},'Y',#{creName})
+	</insert>
+
+	<select id="selectCreNo" parameterType="Creator" resultMap="creatorResultSet">
+		SELECT * FROM
+		CREATOR
+		WHERE M_NO=#{mNo}
+		AND CRE_EMAIL=#{creEmail}
+		AND CRE_PHONE=#{crePhone}
+		AND CRE_ADDRESS=#{creAddress}
+		AND CRE_URL=#{creUrl}
+		AND CRE_NAME=#{creName}
+	</select>
+	
+	<insert id="projectInsert" parameterType="Project">
+		INSERT INTO PROJECT
+		VALUES(SEQ_PID.NEXTVAL,#{creNo},#{pcNo},#{pUrl},#{pTitle},#{pText},#{pDesc},#{pVideo},#{pHashTag},null,null,null,null,null,'W')
+	</insert>
+	
+	<select id="selectOneProject" parameterType="Project" resultMap="projectResultSet">
+		SELECT * FROM
+		PROJECT
+		WHERE CRE_NO=#{creNo}
+		AND PC_NO=#{pcNo}
+		AND P_TITLE=#{pTitle}
+	</select>
+	
+	<insert id="pPhotoMainInsert">
+	INSERT INTO FILES
+	VALUES(SEQ_FID.NEXTVAL,null,#{pNo},null,null,null,2,#{originName},#{changeName},#{filePath},SYSDATE,'Y',1)
+	
+	</insert>
+	
+	<insert id="pPhotoInsert">
+	INSERT INTO FILES
+	VALUES(SEQ_FID.NEXTVAL,null,#{pNo},null,null,null,2,#{originName},#{changeName},#{filePath},SYSDATE,'Y',2)
+	
+	</insert>
+	
+	<insert id="rewardInsert">
+	INSERT INTO REWARD
+	VALUES(SEQ_RID.NEXTVAL,#{pNo},#{rSeq},#{rItem},#{rPrice},#{rCount},#{rOption},#{rDelivery},#{rLimit})
+	</insert>
+	
+	<select id="selectProject" parameterType="Project" resultMap="projectResultSet">
+		SELECT * FROM PROJECT
+		WHERE P_NO=#{pNo}
+	</select>
+	
+	<update id="finishProject" parameterType="Project">
+	UPDATE PROJECT
+	SET P_START_DATE=#{pStartDate},
+		P_END_DATE=#{pEndDate},
+		P_TARGET_AMOUNT=#{pTargetAmount},
+		P_SUM_AMOUNT=0,
+		P_ACCOUNT=#{pAccount},
+		P_STATUS='N'
+	WHERE P_NO=#{pNo}
+		
+		
+	</update>
+	
+	
+</mapper>
