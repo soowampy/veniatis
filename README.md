@@ -10,11 +10,14 @@ One to two paragraph statement about your product and what it does.
 ![](header.png)
 
 ## 개발 환경
-
+- Java Spring Boot
+- Oracle
+- Mybatis
+- API : KaKao API, Naver Developer, Open Weather
 
 
 ## 구현 내용
-- 블로그 서비스
+- 블로그 서비스 (블로그 생성, 포스트 작성/수정/삭제, 덧글 작성/수정/삭제, 좋아요, 스크랩, 구독, 블로그 CSS 수정)
 
 
 ## 코드 소개
