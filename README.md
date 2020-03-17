@@ -1,7 +1,6 @@
 # VENIATIS
 > 크라우드 펀딩 지원 웹 사이트 프로젝트입니다.
 
-One to two paragraph statement about your product and what it does.
 
 ![](header.png)
 
