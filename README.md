@@ -1,5 +1,5 @@
 # VENIATIS
-> Short blurb about what your product does.
+> 크라우드 펀딩 지원 웹 사이트 프로젝트입니다.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
