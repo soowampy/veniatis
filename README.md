@@ -22,12 +22,9 @@
 
 ## 주요 이슈
 
-<b>1. 회원 고유 블로그 주소 지정</b><br>
-Get<br><br>
-<b>2. Create your feature branch (`git checkout -b feature/fooBar`)</b><br>
-ㅇㅇ<br><br>
-<b>3. Commit your changes (`git commit -am 'Add some fooBar'`)</b><br>
-ㅇㅇㅇ<br><br>
+1. 회원 고유 블로그 주소 지정
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
 ## 보완점
 
 1. Fork it (<https://github.com/yourname/yourproject/fork>)
