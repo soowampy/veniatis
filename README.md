@@ -40,29 +40,10 @@
          - 카테고리 관리 : 카테고리 추가, 이름 변경, 제거
          - 블로그 꾸미기 : colorpicker를 이용해 배경 색 변경, 우측 사이드바 내역(태그,날씨,시간) 변경
          - 구독 관리 : 구독한 블로그 조회, 구독 
-## 라이브러리
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-
 ## 주요 이슈
 1. 회원 고유 블로그 주소 지정
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
-
-## 보완점
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
-
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
 
 
 ## 코드 소개
