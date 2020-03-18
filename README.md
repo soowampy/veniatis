@@ -32,12 +32,12 @@
 
 ## 주요 이슈
 
-<b>1. 회원 고유 블로그 주소 지정</b>
-Get
-<b>2. Create your feature branch (`git checkout -b feature/fooBar`)</b>
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
+<b>1. 회원 고유 블로그 주소 지정</b><br>
+Get<br>
+<b>2. Create your feature branch (`git checkout -b feature/fooBar`)</b><br>
+3. Commit your changes (`git commit -am 'Add some fooBar'`)<br>
+4. Push to the branch (`git push origin feature/fooBar`)<br>
+5. Create a new Pull Request<br>
 
 ## 보완점
 
