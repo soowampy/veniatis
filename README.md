@@ -49,8 +49,6 @@
    - 카카오 개발자 센터(카카오톡 공유, 카카오맵)
    - HTML5 Geolcation(위도,경도 추출)
    - OpenWeatherMap(현재 날씨) 
-(`git checkout -b feature/fooBar`)
-
 
 ## 코드 소개
 
