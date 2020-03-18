@@ -42,8 +42,8 @@
          - 구독 관리 : 구독한 블로그 조회, 구독 
 ## 주요 이슈
 1. 회원 고유 블로그 주소 지정
-   - GET 방식을 사용해 URL형태로 표현하는 것에 대해 많은 고민을 하였습니다.처음에는 단순하게 포스트 번호로만 주소창을 표현할까 생각했지만, 'BLOG 서비스'는 특정 페이지를 타 유저에게 접속하게 하는 것이 주 목적이므로 주소창에 유저의 아이디와 고유의 글번호가 필요하다고 생각해 유저별 포스트 고유번호를 저장하는 UNINO 컬럼을 생성하였습니다.
-   (`localhost:8800/veniatis/blogDetail.do?userId=user03&uniNo=1`)
+   - GET 방식을 사용해 URL형태로 표현하는 것에 대해 많은 고민을 하였습니다.처음에는 단순하게 포스트 번호로만 주소창을 표현할까 생각했지만, 'BLOG 서비스'는 특정 페이지를 타 유저에게 접속하게 하는 것이 주 목적이므로 주소창에 유저의 아이디와 고유의 글번호가 필요하다고 생각해 유저별 포스트 고유번호를 저장하는 UNINO 컬럼을 생성하였습니다.<br>
+   구현된 주소창 : `localhost:8800/veniatis/blogDetail.do?userId=user03&uniNo=1`
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 
