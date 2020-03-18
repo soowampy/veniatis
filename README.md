@@ -7,13 +7,14 @@
 - Java Spring Boot
 - Oracle
 - Mybatis
-- API : KaKao API, Naver Developer, Open Weather
+- API : KaKao API, Naver Developer, OpenWeather
 
 
 ## 구현 내용
 - 블로그 서비스 (블로그 생성, 포스트 작성/수정/삭제, 덧글 작성/수정/삭제, 좋아요, 스크랩, 구독, 블로그 CSS 수정)
 * 블로그 서비스
     * 블로그 메인 홈
+     -
     * 블로그 생성
     * 포스트 작성 / 수정 / 삭제
     * 블로그 메인 
@@ -26,12 +27,11 @@
     * CHANGE: Update docs (module code remains unchanged)
 
 ## 주요 이슈
-
 1. 회원 고유 블로그 주소 지정
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
-## 보완점
 
+## 보완점
 1. Fork it (<https://github.com/yourname/yourproject/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
