@@ -41,7 +41,6 @@
          - 블로그 꾸미기 : colorpicker를 이용해 배경 색 변경, 우측 사이드바 내역(태그,날씨,시간) 변경
          - 구독 관리 : 구독한 블로그 조회, 구독 
 ## 라이브러리
-
 * 0.2.1
     * CHANGE: Update docs (module code remains unchanged)
 
