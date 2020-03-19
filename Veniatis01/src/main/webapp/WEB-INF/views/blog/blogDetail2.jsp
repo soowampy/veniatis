@@ -117,8 +117,6 @@
     <script>
     $(document).ready(function () {
     	getLocation(); 
-    	
-    	
     });
     var city="Seoul";
     var lat=0;
@@ -138,8 +136,6 @@
     function showPosition(position) {
         lat=position.coords.latitude; 
         lon=position.coords.longitude;
-        console.log(lat);
-        console.log(lon);
         nowWeather();
     }
     
@@ -156,7 +152,6 @@
             var temp = String((data.main.temp - 272)).substring(0,4); // 온도
             var location = data.name; // 지역이름 
 			console.log("온도:"+temp);
-           //  $('#chatLog').append('지역 ：' + location + ' 온도　：' + tempr　+ "도입니다. "+'\n');
 // 아이콘 취득 
             var imgURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             // 아이콘 표시
@@ -170,7 +165,7 @@
     }
     </script>
 <script>
-<!-- 좋아요 넣었는지 알아오깅 (넣엇으면 빨간하트 안넣었으면 까만하트) -->
+<!-- 좋아요 넣었는지 알아오기 -->
 $(document).ready(function () {
     var mNo1 = ${nowUser.mNo};
     var bNo1 = ${likeDetail.bNo};
@@ -189,7 +184,6 @@ $(document).ready(function () {
         success : function(data){
 
         	check=data;
-        	console.log(check);
         	$('.likeInfo').text("좋아요 "+data);
 
         },               error:function(e){
@@ -207,17 +201,11 @@ $(document).ready(function () {
 	        		bNo : bNo1},
 	        dataType:"text",
 	        success : function(data){
-
-				console.log(data);
 	        	check=data;
-	        	console.log(check);
-
              if(check>0) {
 	                $("#heart").prop("src", "resources/common/yesLike.png");
-	                console.log("체크됨ㅋㅋ");
 	            }
 	            else {
-	            	console.log("체크안됨ㅋㅋ");
 	                $("#heart").prop("src", "resources/common/noLike.png");
 	            } 
 
@@ -240,7 +228,6 @@ $(document).ready(function () {
         				'no' : '${user.mNo}'};
 
 		if(check==0){
-			console.log("조아요안함");
 			 $.ajax({
 		            url :'heartInsert.do',
 		            type :'POST',
@@ -259,7 +246,6 @@ $(document).ready(function () {
 		        });
 
 	}else{
-		console.log("조아요함");
 		$.ajax({
         	
             url :'heartdelete.do',
@@ -295,15 +281,12 @@ function replyList(){
 			
 			if(data.length>0){
 			// 댓글등록 됐을 때
-			
 			num=data.length;
-			
 			var $r0 = $("<h5>").text(num+"개의 댓글");
 			$tableBody.append($r0);
 			$tableBody.append("<br>");
 				for(var i in data){
 					var $r1 = $("<div class='comment-list' id='rNo"+data[i].rNo+"'>");
-
 					if('${user.mId}'==data[i].mId){
 						var $r2 = $("<div class='single-comment justify-content-between d-flex' style='background-color: rgba(240, 248, 255);'> ");
 					}else{
@@ -358,7 +341,6 @@ function replyList(){
 					$r8.append($r13);
 					$r13.append($r14);			
 					
-					console.log("아작스전:"+data[i].rNo);
 					
 					//답글 가져오기 ajax
 					$.ajax({
@@ -368,11 +350,8 @@ function replyList(){
 						async: false,
 						data : {rNo:data[i].rNo},
 						success: function(data2){
-							console.log("아작스후:"+data2);
 							for(var k in data2){
 								var $rr1 = $("<div class='comment-list'>");
-								
-								
 								if('${user.mId}'==data2[k].mId){
 									var $rr2 = $("<div class='single-comment justify-content-between d-flex' style='margin-left: 5%; background-color: rgba(240, 248, 255);'> ");
 								}else{
@@ -588,27 +567,6 @@ function replyList(){
                             </c:forEach>
                         
                         </div><br>
-<!--                         <div class="navigation-area">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                    <div class="detials">
-                                        <p>이전 게시글</p>
-                                        <a href="#">
-                                            <h4>이거어ㅣ거저거</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                    <div class="detials">
-                                        <p>다음 게시글</p>
-                                        <a href="#">
-                                            <h4>이거요거저거</h4>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="comments-area">
 
@@ -897,7 +855,6 @@ function displayCenterInfo(result, status) {
 		var bNo = ${post.bNo};
 		var rContent = $("#comment").val();
 		var mId = "${post.mId}";
-		console.log("댓글작성"+rContent);
 		
 		$.ajax({
 			url : "replyInsert.do",
@@ -919,7 +876,6 @@ function displayCenterInfo(result, status) {
 	});
 	
 	function rDelete(a){
-		console.log("삭제!!"+a);
 		var rNo= a;
 		$.ajax({
 			url : "blogReplyDelete.do",
@@ -939,9 +895,7 @@ function displayCenterInfo(result, status) {
 	}
 	
 	function rUpdate(no){
-		console.log(no);
 		var con= $("#con"+no).text();
-		console.log(con);
 		$("#con"+no).empty(); 
 		$("#con"+no).append("<textarea id='rUpdateCon'>");
 		$("#rUpdateCon").append(con);
@@ -971,7 +925,6 @@ function displayCenterInfo(result, status) {
 	
 	//답글작성
 	function rReReply(a){
-		console.log("답글"+a);
 		$("#rNo"+a).append("<textarea id='rrply'>답글 작성</textarea>");
 		$("#rNo"+a).append("<button id='rSubmit2'>작성</button>")
 		
