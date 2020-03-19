@@ -58,4 +58,3 @@
 make install
 npm test
 ```
-OS X & Linux:
