@@ -140,7 +140,6 @@
 		mv.addObject("cate", cate); // 카테고리
 		mv.addObject("post", post); // 포스트목록
 		mv.addObject("tags", realtags); // 태그
-		System.out.println(BlogPagination.getPageInfo());
 		mv.addObject("pi", BlogPagination.getPageInfo()); /// 페이징바
 		mv.setViewName("blog/blogMain2");
 
