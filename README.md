@@ -53,8 +53,97 @@
          - 구독 관리 : 구독한 블로그 조회, 구독 
 
 ## 코드 소개
- - 어쩌고저쩌고
+ - 블로그 메인화면을 뷰로 보내기 위한 controller 코드
 ```sh
-make install
-npm test
+	@RequestMapping("blogMain.do")
+	public ModelAndView blogList(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,
+			HttpServletRequest request, @RequestParam("userId") String userId) {
+		
+      // get방식을 이용하여 RequestParam을 통해 userId값을 가져오고 userId를 Service로 보내 DB에서 유저 정보 가져오기
+		Member m = mService.selectOneMember(userId);
+		HttpSession session = request.getSession();
+		Member nowUser = (Member) session.getAttribute("loginUser");
+		
+		// 유저에 할당하는 블로그 정보를 갖고온다.
+		BlogDetail bd = bService.selectBlogDetail(m.getmNo());
+		
+		if (bd == null) {
+			// 만약에 그 블로그 정보가 비어있다면? 블로그 서비스에 처음 접속하는 것 이므로 블로그를 생성한다.
+			Member newM = mService.selectOneMember(userId);
+			newM.setmName(newM.getmName() + " 님의 블로그입니다.");
+			bService.insertBlogDetail(newM);
+
+			// 기본 카테고리도 만들어준다.
+			bService.insertNewCate(newM.getmId());
+			
+			// 다 갖추어졌으니 블로그 정보를 갖고온다.
+			bd = bService.selectBlogDetail(m.getmNo());
+		}
+
+		// 카테고리 목록 갖고오기
+		ArrayList<BlogCate> cate = bService.selectCateList(userId);
+
+		// 포스트 목록 갖고오기
+		int currentPage = page != null ? page : 1;
+		ArrayList<BlogPost> post = bService.selectPostList(userId, currentPage);
+
+		// 태그 전체 갖고오기
+		// 1. 전체 게시글을 갖고온다 (한개의 게시글당 여러태그가 존재하므로
+		ArrayList<BlogPost> allPost = bService.selectPostList(userId);
+		// 태그 목록을 한 곳에 담을 String 변수를 선언한다.
+		String allTag = "";
+		
+		// 2. allPost에 태그가 있다면 allTag 변수에 추가한다.
+		for (int i = 0; i < allPost.size(); i++) {
+			if (allPost.get(i).getbTag() != null) {
+				allTag = allTag + allPost.get(i).getbTag();
+			}
+		}
+		
+		// 3. split 메소드를 통해 tag 배열에 담는다.
+		String tags[] = allTag.split("#");
+		
+		// 4. ArrayList에 담는다
+		ArrayList<String> realtags = new ArrayList();
+
+		for (int i = 0; i < tags.length; i++) {
+			realtags.add(tags[i]);
+		}
+		
+		// 5. 중복제거
+		for (int i = 0; i < realtags.size(); i++) {
+			for (int j = 0; j < realtags.size(); j++) {
+				if (i == j) {
+
+				} else if (realtags.get(j).equals(realtags.get(i))) {
+					realtags.remove(j);
+				}
+			}
+		}
+
+		// 지금 접속하려는 블로그가 나의 구독상탠지 아닌지 알아보기
+		// 1.먼저 내 구독리스트를 갖고 온다
+		//   구독 블로거들 ID를 갖고 온다. subId에 담겨져 있음
+		ArrayList<BlogSub> subList = bService.selectSubList(nowUser.getmId());
+		// 2. 비교한다. true면 구독 되어있는 상태, false면 미구독 상태
+		boolean sub = false;
+		for (int i = 0; i < subList.size(); i++) {
+			if (subList.get(i).getSubId().equals(userId)) {
+				sub = true;
+			}
+		}
+
+		mv.addObject("subtf", sub);// 구독확인
+		mv.addObject("bd", bd); // 블로그디테일
+		mv.addObject("user", m); // 유저(블로그주인)
+		mv.addObject("tags", tags); // 태그
+		mv.addObject("cate", cate); // 카테고리
+		mv.addObject("post", post); // 포스트목록
+		mv.addObject("tags", realtags); // 태그
+		System.out.println(BlogPagination.getPageInfo());
+		mv.addObject("pi", BlogPagination.getPageInfo()); /// 페이징바
+		mv.setViewName("blog/blogMain2");
+
+		return mv;
+	}
 ```
