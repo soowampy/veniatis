@@ -5,8 +5,9 @@
 
 ## 개발 환경
 - Java Spring Boot
-- Oracle
-- Mybatis
+- Oracle / Mybatis
+- Javascript / JQuery / Ajax
+- Html / CSS3 / Bootstrap
 - API : KaKao API, Naver Developer, OpenWeather
 
 
@@ -51,9 +52,7 @@
    - OpenWeatherMap(현재 날씨) 
 
 ## 코드 소개
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
+ - 
 ```sh
 make install
 npm test
