@@ -53,19 +53,9 @@
          - 구독 관리 : 구독한 블로그 조회, 구독 
 
 ## 코드 소개
- - 
+ - 어쩌고저쩌고
 ```sh
 make install
 npm test
 ```
 OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
